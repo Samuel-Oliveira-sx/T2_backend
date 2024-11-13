@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Django</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            text-align: center;
+        }
+        nav {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            color: #e8491d;
+        }
+        .button {
+            padding: 15px 20px;
+            border: none;
+            outline: none;
+            background-color: #151515;
+            color: #eee;
+            border-radius: 7px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+        }
+        .button-span {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hotel Django - Sistema de Reserva de Quartos</h1>
+    </header>
+    <nav>
+        <a href="{% url 'listar_quartos' %}" class="button">Lista de Quartos</a>
+        <a href="{% url 'criar_quarto' %}" class="button">Criar Quarto</a>
+        <a href="{% url 'criar_cliente' %}" class="button">Cadastrar Cliente</a>
+        <a href="{% url 'criar_reserva' %}" class="button">Criar Reserva</a>
+        <a href="{% url 'listar_reservas' %}" class="button">Reservas</a>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

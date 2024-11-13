@@ -1,0 +1,34 @@
+/{% extends 'hoteldjango/base.html' %}
+{% block content %}
+<style>
+    h2 {
+        color: #35424a;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .button {
+        padding: 10px 15px;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+</style>
+<h2>Reservas</h2>
+<ul>
+    {% for reserva in reservas %}
+        <li>
+            {{ reserva.cliente }} - Quarto {{ reserva.quarto.numero }} - {{ reserva.status }}
+            <a href="{% url 'cancelar_reserva' reserva.pk %}" class="button">Cancelar</a>
+        </li>
+    {% empty %}
+        <li>Nenhuma reserva encontrada.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

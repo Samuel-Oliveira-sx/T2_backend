@@ -1,0 +1,22 @@
+{% extends 'hoteldjango/base.html' %}
+{% block content %}
+<style>
+    h2 {
+        color: #35424a;
+    }
+    .warning {
+        background: #ffdddd;
+        border-left: 6px solid #f44336;
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+</style>
+<h2>Deletar Quarto</h2>
+<div class="warning">
+    <p>Tem certeza de que deseja deletar o quarto {{ quarto.numero }}?</p>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="button">Confirmar</button>
+</form>
+{% endblock %}

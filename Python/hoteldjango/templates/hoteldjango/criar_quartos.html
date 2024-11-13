@@ -1,0 +1,45 @@
+{% extends 'hoteldjango/base.html' %}
+{% block content %}
+<style>
+    h2 {
+        color: #35424a;
+    }
+    form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    input[type="text"], input[type="number"], select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .errorlist {
+        color: red;
+        list-style-type: none;
+        padding: 0;
+    }
+</style>
+<h2>Criar Novo Quarto</h2>
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <button type="submit" class="button">Salvar</button>
+</form>
+{% endblock %}

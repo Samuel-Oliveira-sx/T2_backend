@@ -1,0 +1,35 @@
+{% extends 'hoteldjango/base.html' %}
+{% block content %}
+<style>
+    h2 {
+        color: #35424a;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .button {
+        padding: 10px 15px;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+</style>
+<h2>Lista de Quartos</h2>
+<ul>
+    {% for quarto in quartos %}
+        <li>
+            {{ quarto.numero }} - {{ quarto.tipo }} - R$ {{ quarto.preco }}
+            <a href="{% url 'editar_quarto' quarto.pk %}" class="button">Editar</a>
+            <a href="{% url 'deletar_quarto' quarto.pk %}" class="button">Deletar</a>
+        </li>
+    {% empty %}
+        <li>Nenhum quarto disponível.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

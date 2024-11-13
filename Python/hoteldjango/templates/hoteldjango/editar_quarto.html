@@ -1,0 +1,26 @@
+{% extends 'hoteldjango/base.html' %}
+{% block content %}
+<style>
+    h2 {
+        color: #35424a;
+    }
+    form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    input[type="text"], input[type="number"], select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+</style>
+<h2>Editar Quarto</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Salvar Alterações</button>
+</form>
+{% endblock %}
